@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { OrganizerLogos } from "@/components/layout/footer/organizer-logos";
 import { SocialLinks } from "@/components/layout/footer/social-links";
 import { Container } from "@/components/shared/container";
 import { navLinks } from "@/data/nav";
@@ -28,7 +29,7 @@ export function Footer() {
 
         <div className="h-px w-full bg-white/20" />
 
-        <div className="mx-auto w-full max-w-2xl">
+        <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-4">
           <Image
             src="/images/hero/logo.png"
             alt={site.name}
@@ -36,6 +37,7 @@ export function Footer() {
             height={250}
             className="h-auto w-full object-contain"
           />
+          <OrganizerLogos />
         </div>
 
         <div className="h-px w-full bg-white/20" />

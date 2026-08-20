@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Ticket } from "lucide-react";
 
 import { Container } from "@/components/shared/container";
@@ -8,7 +9,15 @@ import { site } from "@/data/site";
 export function CtaBanner() {
   return (
     <section className="relative overflow-hidden bg-black py-24 md:py-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,rgba(255,0,161,0.25),transparent)]" />
+      <Image
+        src="/images/about/team-photo.jpg"
+        alt={`Equipe do ${site.name}`}
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-black/75" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,rgba(255,0,161,0.3),transparent)]" />
 
       <Container className="relative flex flex-col items-center gap-10 text-center">
         <Reveal className="flex flex-col items-center gap-10">
