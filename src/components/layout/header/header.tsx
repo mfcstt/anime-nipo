@@ -24,6 +24,7 @@ export function Header() {
 
   return (
     <header
+      id="site-header"
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300",
         scrolled ? "border-white/10 bg-black/70 backdrop-blur-md" : "bg-transparent",
