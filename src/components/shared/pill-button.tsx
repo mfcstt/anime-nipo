@@ -46,11 +46,11 @@ export function PillButton({
 
   if (href) {
     return external ? (
-      <a href={href} target="_blank" rel="noreferrer" className={classes}>
+      <a href={href} target="_blank" rel="noreferrer" className={classes} onClick={onClick}>
         {content}
       </a>
     ) : (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {content}
       </Link>
     );
