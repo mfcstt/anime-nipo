@@ -1,4 +1,4 @@
-import { BookOpen, Guitar, MessagesSquare, Mic, Music4, PartyPopper, Sparkles } from "lucide-react";
+import { Guitar, MessagesSquare, Mic, Music4, Sparkles } from "lucide-react";
 
 import type { HighlightCard } from "@/types";
 
@@ -27,15 +27,5 @@ export const highlights: HighlightCard[] = [
     icon: MessagesSquare,
     title: "Dubladores convidados",
     description: "Bate-papo com Gabriel Verta e Jacque Souza, vozes que você conhece.",
-  },
-  {
-    icon: BookOpen,
-    title: "Cultura japonesa",
-    description: "Escola de Língua Japonesa e apresentações de taiko tradicional.",
-  },
-  {
-    icon: PartyPopper,
-    title: "Dança de Matsuri",
-    description: "O tradicional encerramento em grupo que fecha os dois dias de festa.",
   },
 ];

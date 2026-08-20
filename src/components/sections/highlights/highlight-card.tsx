@@ -28,7 +28,7 @@ export function HighlightCard({
           <ImagePlaceholder label={title} className="size-full" />
         )}
       </div>
-      <div className="flex flex-col items-start gap-2 bg-white/5 px-6 py-8">
+      <div className="flex flex-1 flex-col items-start justify-center gap-2 bg-white/5 px-6 py-8">
         <span className="flex items-center justify-center rounded-full border border-primary/10 bg-primary/10 p-3 text-accent-foreground">
           <Icon className="size-5" />
         </span>

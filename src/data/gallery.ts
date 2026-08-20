@@ -13,4 +13,6 @@ export const galleryImages: GalleryImage[] = [
   { alt: "Apresentação de taiko — 13ª edição" },
   { alt: "Dança de matsuri — 12ª edição" },
   { alt: "Concurso de K-pop — 12ª edição" },
+  { alt: "Comunidade reunida — 14ª edição" },
+  { alt: "Bandas ao vivo — 13ª edição" },
 ];

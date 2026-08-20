@@ -115,6 +115,32 @@
   animation: marquee 32s linear infinite;
 }
 
+@keyframes marquee-vertical-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes marquee-vertical-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee-vertical-up {
+  animation: marquee-vertical-up 36s linear infinite;
+}
+
+.animate-marquee-vertical-down {
+  animation: marquee-vertical-down 42s linear infinite;
+}
+
 /* Base UI marks the inactive tab panel `inert` but doesn't hide it visually. */
 [data-slot="tabs-content"][inert] {
   display: none;
