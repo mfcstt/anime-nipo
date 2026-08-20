@@ -40,24 +40,33 @@ export function Hero() {
     const header = document.getElementById("site-header");
     if (!section || !pinned || !video || !art || !character || !content) return;
 
-    // iOS Safari mostly ignores preload="auto" and won't actually fetch
-    // video data until playback has genuinely started at least once —
-    // otherwise it just sits at a black first frame. A muted play/pause
-    // is allowed without a user gesture and "primes" the decoder so the
-    // scroll-driven seeking below actually has data to seek through.
-    video.muted = true;
-    video.defaultMuted = true;
-    video.load();
-    video.play()?.catch(() => {});
-    requestAnimationFrame(() => video.pause());
+    let trigger: ScrollTrigger | null = null;
+    let settled = false;
 
-    // Where the video starts (the character's own spot) vs. where it ends
-    // up (full screen), measured once so the video can visually "grow out"
-    // of the character illustration instead of just appearing full-bleed.
-    const startBox = character.getBoundingClientRect();
+    // Restrictive embedded browsers (Instagram/Facebook/TikTok in-app
+    // WebViews especially) can refuse to play video at all, even muted.
+    // If that happens, bail out of the whole scroll-video effect and just
+    // leave the normal static hero on screen — better than a stuck pin or
+    // a black section.
+    const fallbackToStaticHero = () => {
+      if (settled) return;
+      settled = true;
+      trigger?.kill();
+      gsap.set([content, art], { opacity: 1, pointerEvents: "auto" });
+      gsap.set(video, { opacity: 0 });
+      if (header) gsap.set(header, { opacity: 1, pointerEvents: "auto" });
+    };
 
-    const ctx = gsap.context(() => {
-      const trigger = ScrollTrigger.create({
+    const setupScrollVideo = () => {
+      if (settled) return;
+
+      // Where the video starts (the character's own spot) vs. where it
+      // ends up (full screen), measured once so it can visually "grow
+      // out" of the character illustration instead of just appearing
+      // full-bleed.
+      const startBox = character.getBoundingClientRect();
+
+      trigger = ScrollTrigger.create({
         trigger: section,
         start: "top top",
         end: "+=160%",
@@ -113,11 +122,39 @@ export function Hero() {
           });
         },
       });
+    };
 
-      return () => trigger.kill();
-    }, section);
+    // iOS Safari (and even more so, in-app WebViews) mostly ignore
+    // preload="auto" and won't actually fetch video data until playback
+    // has genuinely started at least once. A muted play/pause is allowed
+    // without a user gesture and "primes" the decoder — but if even that
+    // gets rejected, treat it as this browser just not supporting the
+    // effect and fall back gracefully.
+    video.muted = true;
+    video.defaultMuted = true;
 
-    return () => ctx.revert();
+    const onError = () => fallbackToStaticHero();
+    video.addEventListener("error", onError);
+
+    video.load();
+    const playAttempt = video.play();
+    if (playAttempt) {
+      playAttempt
+        .then(() => {
+          requestAnimationFrame(() => video.pause());
+          setupScrollVideo();
+        })
+        .catch(fallbackToStaticHero);
+    } else {
+      video.pause();
+      setupScrollVideo();
+    }
+
+    return () => {
+      settled = true;
+      video.removeEventListener("error", onError);
+      trigger?.kill();
+    };
   }, []);
 
   return (
