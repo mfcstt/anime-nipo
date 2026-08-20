@@ -6,14 +6,14 @@ import { motion } from "motion/react";
 export function HeroArt() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-y-0 right-0 w-[85%] opacity-40 [mask-image:linear-gradient(to_right,transparent,black_40%)] md:w-[70%] md:[mask-image:linear-gradient(to_right,transparent,black_35%)]">
         <Image
           src="/images/hero/moon-bg.png"
           alt=""
           fill
           priority
-          className="object-cover"
-          sizes="100vw"
+          className="object-cover object-[35%_30%]"
+          sizes="70vw"
         />
       </div>
 

@@ -1,7 +1,6 @@
-import { Calendar, MapPin, Sparkles, Users } from "lucide-react";
+import { Calendar, MapPin, Sparkles } from "lucide-react";
 
 import { HeroArt } from "@/components/sections/hero/hero-art";
-import { HeroFloatingBadge } from "@/components/sections/hero/hero-floating-badge";
 import { Container } from "@/components/shared/container";
 import { PillButton } from "@/components/shared/pill-button";
 import { Reveal } from "@/components/shared/reveal";
@@ -50,17 +49,6 @@ export function Hero() {
             </span>
           </div>
         </Reveal>
-
-        <HeroFloatingBadge
-          icon={Sparkles}
-          label={site.edition}
-          className="absolute top-[6%] left-[46%]"
-        />
-        <HeroFloatingBadge
-          icon={Users}
-          label="+1.100 pessoas"
-          className="absolute bottom-[6%] left-[38%]"
-        />
       </Container>
     </section>
   );
