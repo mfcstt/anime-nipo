@@ -4,7 +4,7 @@ export function MapEmbed() {
   const query = encodeURIComponent(site.location.mapsQuery);
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/10 sm:aspect-video">
+    <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 sm:aspect-[4/3]">
       <iframe
         title={`Mapa — ${site.location.venue}`}
         src={`https://www.google.com/maps?q=${query}&output=embed`}
