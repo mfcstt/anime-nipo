@@ -22,6 +22,7 @@ export const site = {
     threads: "https://www.threads.net/@animenipo",
     email: "mailto:contato@animenipo.com.br",
     site: "https://animenipo.com.br",
+    gallery14thEdition: "https://marceluyetafotos77.pixieset.com/animenipo2025/",
   },
   contactEmail: "contato@animenipo.com.br",
 } as const;

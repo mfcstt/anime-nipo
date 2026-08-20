@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { SocialLinks } from "@/components/layout/footer/social-links";
 import { Container } from "@/components/shared/container";
 import { navLinks } from "@/data/nav";
@@ -26,9 +28,15 @@ export function Footer() {
 
         <div className="h-px w-full bg-white/20" />
 
-        <p className="text-center font-heading text-[16vw] leading-none font-semibold tracking-tight text-white sm:text-[110px] md:text-[140px]">
-          {site.name.toUpperCase()}
-        </p>
+        <div className="mx-auto w-full max-w-2xl">
+          <Image
+            src="/images/hero/logo.png"
+            alt={site.name}
+            width={1000}
+            height={250}
+            className="h-auto w-full object-contain"
+          />
+        </div>
 
         <div className="h-px w-full bg-white/20" />
 
