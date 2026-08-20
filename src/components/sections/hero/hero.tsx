@@ -16,9 +16,7 @@ export function Hero() {
       <Container className="relative">
         <Reveal className="flex max-w-xl flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <SectionBadge icon={Sparkles} className="w-fit">
-              {site.edition}
-            </SectionBadge>
+            <SectionBadge icon={Sparkles}>{site.edition}</SectionBadge>
 
             <h1 className="font-heading text-6xl leading-[1.05] font-semibold text-white sm:text-7xl lg:text-8xl">
               {site.dates.label.split(" ").slice(0, 3).join(" ")}

@@ -15,6 +15,8 @@ export const contests: ContestInfo[] = [
       "Grande final ao vivo no domingo (23/08)",
     ],
     deadline: "Check-in até 15h de 23/08",
+    registrationUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdQP_YLgEa6Oo_PpGmXobTGwX59DfE_3m-xHdvPlAbcaFOtuA/viewform",
   },
   {
     icon: Music4,

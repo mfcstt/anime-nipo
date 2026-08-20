@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Check, Clock } from "lucide-react";
+import { Check, Clock, ClipboardList } from "lucide-react";
 
+import { PillButton } from "@/components/shared/pill-button";
 import type { ContestInfo } from "@/types";
 
 export function ContestCard({
@@ -10,6 +11,7 @@ export function ContestCard({
   description,
   details,
   deadline,
+  registrationUrl,
 }: ContestInfo) {
   return (
     <div className="flex h-full flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-md">
@@ -42,9 +44,16 @@ export function ContestCard({
           ))}
         </ul>
 
-        <div className="mt-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-3 text-xs font-medium text-accent-foreground uppercase">
-          <Clock className="size-4" />
-          {deadline}
+        <div className="mt-auto flex flex-col gap-3">
+          {registrationUrl ? (
+            <PillButton href={registrationUrl} external icon={ClipboardList} className="w-full">
+              Inscreva-se
+            </PillButton>
+          ) : null}
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-3 text-xs font-medium text-accent-foreground uppercase">
+            <Clock className="size-4" />
+            {deadline}
+          </div>
         </div>
       </div>
     </div>

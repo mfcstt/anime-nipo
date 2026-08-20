@@ -42,6 +42,7 @@ export type ContestInfo = {
   description: string;
   details: string[];
   deadline: string;
+  registrationUrl?: string;
 };
 
 export type GalleryImage = {
