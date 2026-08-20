@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { animate, motion, useInView, useMotionValue, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 type StatCounterProps = {
   value: number;
@@ -9,21 +8,49 @@ type StatCounterProps = {
   className?: string;
 };
 
+const DURATION_MS = 1600;
+const EASE_OUT_EXPO = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
 export function StatCounter({ value, suffix = "", className }: StatCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest).toLocaleString("pt-BR"));
+  const [display, setDisplay] = useState(0);
+  const startedRef = useRef(false);
 
   useEffect(() => {
-    if (!isInView) return;
-    const controls = animate(count, value, { duration: 1.6, ease: [0.16, 1, 0.3, 1] });
-    return () => controls.stop();
-  }, [isInView, value, count]);
+    const el = ref.current;
+    if (!el) return;
+
+    const runCountUp = () => {
+      if (startedRef.current) return;
+      startedRef.current = true;
+
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / DURATION_MS);
+        setDisplay(Math.round(value * EASE_OUT_EXPO(progress)));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          runCountUp();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [value]);
 
   return (
     <span ref={ref} className={className}>
-      <motion.span>{rounded}</motion.span>
+      {display.toLocaleString("pt-BR")}
       {suffix}
     </span>
   );
