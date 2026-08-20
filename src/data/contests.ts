@@ -5,6 +5,7 @@ import type { ContestInfo } from "@/types";
 export const contests: ContestInfo[] = [
   {
     icon: Sparkles,
+    image: "/images/contests/cosplay.jpg",
     title: "Concurso de Cosplay",
     description:
       "Capriche na fantasia e suba ao palco pra disputar o título de melhor cosplay da edição.",
@@ -17,6 +18,7 @@ export const contests: ContestInfo[] = [
   },
   {
     icon: Music4,
+    image: "/images/contests/kpop.jpg",
     title: "Concurso de K-pop",
     description: "Mostre sua sincronia e faça seu grupo brilhar no palco principal do evento.",
     details: [

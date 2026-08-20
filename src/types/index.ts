@@ -37,6 +37,7 @@ export type PillarCard = {
 
 export type ContestInfo = {
   icon: LucideIcon;
+  image: string;
   title: string;
   description: string;
   details: string[];
