@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, useInView, useMotionValue, useTransform } from "motion/react";
+import { animate, motion, useInView, useMotionValue, useTransform } from "motion/react";
 
 type StatCounterProps = {
   value: number;
@@ -28,5 +28,3 @@ export function StatCounter({ value, suffix = "", className }: StatCounterProps)
     </span>
   );
 }
-
-import { motion } from "motion/react";

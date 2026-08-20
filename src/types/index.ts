@@ -44,7 +44,7 @@ export type ContestInfo = {
 };
 
 export type GalleryImage = {
-  src: string;
+  src?: string;
   alt: string;
 };
 
