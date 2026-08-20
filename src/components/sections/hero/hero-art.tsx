@@ -27,7 +27,7 @@ export function HeroArt({ videoRef, artRef, characterRef }: HeroArtProps) {
 
         <motion.div
           ref={characterRef}
-          className="absolute top-[8%] right-[6%] w-[46%] max-w-[420px] md:right-[8%] md:w-[38%]"
+          className="absolute top-[3%] right-[10%] w-[26%] max-w-[420px] sm:top-[8%] sm:right-[6%] sm:w-[46%] md:right-[8%] md:w-[38%]"
           initial={{ opacity: 0, y: 30, rotate: 22 }}
           animate={{ opacity: 1, y: [0, -14, 0], rotate: 22 }}
           transition={{
@@ -69,6 +69,7 @@ export function HeroArt({ videoRef, artRef, characterRef }: HeroArtProps) {
         src="/videos/fairy-flying.mp4"
         muted
         playsInline
+        webkit-playsinline="true"
         preload="auto"
         className="fixed z-20 object-cover opacity-0"
       />

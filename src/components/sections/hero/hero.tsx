@@ -40,6 +40,17 @@ export function Hero() {
     const header = document.getElementById("site-header");
     if (!section || !pinned || !video || !art || !character || !content) return;
 
+    // iOS Safari mostly ignores preload="auto" and won't actually fetch
+    // video data until playback has genuinely started at least once —
+    // otherwise it just sits at a black first frame. A muted play/pause
+    // is allowed without a user gesture and "primes" the decoder so the
+    // scroll-driven seeking below actually has data to seek through.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.load();
+    video.play()?.catch(() => {});
+    requestAnimationFrame(() => video.pause());
+
     // Where the video starts (the character's own spot) vs. where it ends
     // up (full screen), measured once so the video can visually "grow out"
     // of the character illustration instead of just appearing full-bleed.
