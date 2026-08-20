@@ -8,12 +8,12 @@ import { scheduleDays } from "@/data/schedule";
 export function DayTabs() {
   return (
     <Tabs defaultValue={scheduleDays[0].id} className="gap-8">
-      <TabsList className="h-auto w-fit gap-2 rounded-full border border-white/10 bg-white/5 p-1.5">
+      <TabsList className="group-data-horizontal/tabs:h-auto w-fit gap-2 rounded-full border border-white/10 bg-white/5 p-1.5">
         {scheduleDays.map((day) => (
           <TabsTrigger
             key={day.id}
             value={day.id}
-            className="h-auto rounded-full px-6 py-3 font-button text-sm font-bold text-white/60 data-active:bg-primary data-active:text-primary-foreground data-active:shadow-none"
+            className="h-auto rounded-full border-transparent px-6 py-3 font-button text-sm font-bold text-white/60 after:hidden data-active:!border-primary data-active:!bg-primary data-active:!text-primary-foreground data-active:shadow-none"
           >
             {day.label} · {day.date}
           </TabsTrigger>
