@@ -25,6 +25,7 @@ export type ScheduleDay = {
 
 export type HighlightCard = {
   icon: LucideIcon;
+  image?: string;
   title: string;
   description: string;
 };

@@ -2,8 +2,9 @@ import { Ticket, Users2 } from "lucide-react";
 
 import { PillarCard } from "@/components/sections/pillars/pillar-card";
 import { Container } from "@/components/shared/container";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 import { PillButton } from "@/components/shared/pill-button";
-import { RevealGroup, RevealItem } from "@/components/shared/reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { pillars } from "@/data/pillars";
 import { site } from "@/data/site";
@@ -23,6 +24,13 @@ export function Pillars() {
             Comprar ingressos
           </PillButton>
         </div>
+
+        <Reveal delay={0.1}>
+          <ImagePlaceholder
+            label="Foto do evento"
+            className="aspect-[16/10] w-full rounded-3xl border border-white/10 shadow-[0px_4px_24px_0px_rgba(255,226,219,0.2)] backdrop-blur-[8px] sm:aspect-[3/2]"
+          />
+        </Reveal>
 
         <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((pillar) => (

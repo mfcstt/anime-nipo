@@ -1,15 +1,15 @@
 import Image from "next/image";
-import { Camera } from "lucide-react";
 
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 import type { GalleryImage as GalleryImageType } from "@/types";
 
 export function GalleryImage({ src, alt }: GalleryImageType) {
   if (!src) {
     return (
-      <div className="relative flex aspect-[4/5] flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-primary/15 via-black to-black p-6 text-center">
-        <Camera className="size-8 text-white/30" />
-        <p className="text-xs font-medium text-white/40">{alt}</p>
-      </div>
+      <ImagePlaceholder
+        label={alt}
+        className="aspect-[4/5] rounded-2xl border border-white/10"
+      />
     );
   }
 
